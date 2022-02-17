@@ -15,7 +15,7 @@ TFPURPLEEND="$(echo -e "$PURPLETEXT)$RESETCOLOR")"
 
 function terraform_workspace_prompt()
 {
-    if [ -d .terraform ]; then
+    if [[ -d .terraform ]] || [[ -v TF_WORKSPACE ]]; then
         terraform_workspace="$(command terraform workspace show 2>/dev/null)"
 
         if [[ $terraform_workspace == "prod"* ]] || \
